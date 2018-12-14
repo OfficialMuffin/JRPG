@@ -1,60 +1,72 @@
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.Font;
 
-public class Game {
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
-    JFrame window;
-    Container c;
-    JPanel titlePanel;
-    JPanel startButtonPanel;
+
+public class Game extends Canvas{
+    private static final long serialVersionUID = 1L;
+    public static JFrame window;
+    public static Container c;
+    JPanel titlePanel,startButtonPanel;
     JLabel titleLabel;
     JButton startButton;
-    Font titleFont = new Font("Cooper Black", Font.PLAIN, 90);
-    Font buttonFont = new Font("Cooper Black", Font.PLAIN, 32);
+    Font titleFont = new Font("Cooper Black", Font.PLAIN,90);
+    private static int width = 800;
+    private static int height = 600;
+    public static String title ="Blueberry's Game";
 
-    public static void main(String[] args) {
-        new Game();
+    /*----------------------------------------------------------------------------------------------------*/
+    public static void main(String[] args){
+        Game game = new Game();
+        Game.window.setResizable(false);
+        Game.window.setTitle(Game.title);
+        Game.window.add(game);
+        Game.window.pack();
+        Game.window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Game.window.setLocationRelativeTo(null);
+        Game.window.setVisible(true);
     }
+    /*----------------------------------------------------------------------------------------------------*/
+    public Game(){
 
-    public Game() {
-
-        //Main Window
         window = new JFrame();
-        window.setSize(800, 600);
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setPreferredSize(new Dimension(width, height));
         window.getContentPane().setBackground(Color.BLACK);
-        window.setLayout(null);
-        window.setVisible(true);
         c = window.getContentPane();
 
-        //Title Panel
+        //////////TITLE PANEL//////////////////////
         titlePanel = new JPanel();
         titlePanel.setBounds(100, 100, 600, 150);
-        titlePanel.setBackground(Color.GRAY);
-
+        titlePanel.setBackground(Color.BLACK);
         titleLabel = new JLabel("TEXT RPG");
         titleLabel.setForeground(Color.WHITE);
         titleLabel.setFont(titleFont);
 
-        //Start Button Panel
+        //////////START BUTTON PANEL//////////////////////
         startButtonPanel = new JPanel();
-        startButtonPanel.setBounds(300, 400, 200, 100 );
-        startButtonPanel.setBackground(Color.BLUE);
+        startButtonPanel.setBounds(300, 400, 200, 100);
+        startButtonPanel.setForeground(Color.BLUE);
 
-        //Start Button
+        //////////START BUTTON//////////////////////
         startButton = new JButton("START");
         startButton.setBackground(Color.BLACK);
         startButton.setForeground(Color.WHITE);
-        startButton.setFont(buttonFont);
 
-
-        //Add Elements to Window
+        //////////ADD ELEMENTS TO WINDOW//////////////////////
         titlePanel.add(titleLabel);
         startButtonPanel.add(startButton);
 
-        //Add Elements to Container
+        //////////ADD ELEMENTS TO CONTAINER//////////////////////
         c.add(titlePanel);
         c.add(startButtonPanel);
 
     }
+    /*----------------------------------------------------------------------------------------------------*/
 }
