@@ -113,8 +113,13 @@ public class Game extends Canvas{
 
     public void quitGame() {
 
-        Game.window.setVisible(false);
-        System.exit(0);
+        int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to quit?", "Quit?", JOptionPane.YES_NO_OPTION);
+        if (reply == JOptionPane.YES_OPTION) {
+
+            Game.window.setVisible(false);
+            System.exit(0);
+
+        }
 
     }
 
