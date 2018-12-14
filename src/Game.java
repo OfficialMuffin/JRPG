@@ -14,9 +14,9 @@ public class Game extends Canvas{
     private static final long serialVersionUID = 1L;
     public static JFrame window;
     public static Container c;
-    JPanel titlePanel,startButtonPanel;
+    JPanel titlePanel,startButtonPanel, quitButtonPanel;
     JLabel titleLabel;
-    JButton startButton;
+    JButton startButton, quitButton;
     Font titleFont = new Font("Cooper Black", Font.PLAIN,90);
     private static int width = 800;
     private static int height = 600;
@@ -51,21 +51,34 @@ public class Game extends Canvas{
 
         //////////START BUTTON PANEL//////////////////////
         startButtonPanel = new JPanel();
-        startButtonPanel.setBounds(300, 400, 200, 100);
-        startButtonPanel.setForeground(Color.BLUE);
+        startButtonPanel.setBounds(300, 400, 50, 50);
+        startButtonPanel.setForeground(Color.RED);
 
         //////////START BUTTON//////////////////////
         startButton = new JButton("START");
         startButton.setBackground(Color.BLACK);
         startButton.setForeground(Color.WHITE);
 
+        //////////QUIT BUTTON PANEL/////////////////
+        quitButtonPanel = new JPanel();
+        quitButtonPanel.setBounds(300, 400, 200, 100);
+        quitButtonPanel.setForeground(Color.pink);
+
+        //////////QUIT BUTTON///////////////
+        quitButton = new JButton("QUIT");
+        quitButton.setBackground(Color.BLACK);
+        quitButton.setForeground(Color.WHITE);
+
+
         //////////ADD ELEMENTS TO WINDOW//////////////////////
         titlePanel.add(titleLabel);
         startButtonPanel.add(startButton);
+        quitButtonPanel.add(quitButton);
 
         //////////ADD ELEMENTS TO CONTAINER//////////////////////
         c.add(titlePanel);
         c.add(startButtonPanel);
+        c.add(quitButtonPanel);
 
     }
     /*----------------------------------------------------------------------------------------------------*/
