@@ -111,9 +111,10 @@ public class Game extends Canvas{
         mainTextPanel.add(mainTextArea);
     }
 
-    public static int quitGame() {
+    public void quitGame() {
 
-        return 0;
+        Game.window.setVisible(false);
+        System.exit(0);
 
     }
 
