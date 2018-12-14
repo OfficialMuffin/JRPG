@@ -3,20 +3,22 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 
 public class Game extends Canvas{
     private static final long serialVersionUID = 1L;
     public static JFrame window;
     public static Container c;
-    JPanel titlePanel,startButtonPanel, quitButtonPanel;
+    JPanel titlePanel,startButtonPanel, quitButtonPanel, mainTextPanel;
     JLabel titleLabel;
     JButton startButton, quitButton;
+    JTextArea mainTextArea;
+    TitleScreenHandler tsHandler = new TitleScreenHandler();
+    quitGameHandler qHandler = new quitGameHandler();
     Font titleFont = new Font("Cooper Black", Font.PLAIN,90);
     private static int width = 800;
     private static int height = 600;
@@ -60,6 +62,8 @@ public class Game extends Canvas{
         startButton.setBackground(Color.BLACK);
         startButton.setForeground(Color.WHITE);
 
+        startButton.addActionListener(tsHandler); // Add listener to start button
+
         //////////QUIT BUTTON PANEL/////////////////
         quitButtonPanel = new JPanel();
         quitButtonPanel.setBounds(350, 400, 200, 200);
@@ -70,6 +74,7 @@ public class Game extends Canvas{
         quitButton = new JButton("QUIT");
         quitButton.setBackground(Color.BLACK);
         quitButton.setForeground(Color.WHITE);
+        quitButton.addActionListener(qHandler);
 
 
         //////////ADD ELEMENTS TO WINDOW//////////////////////
@@ -82,6 +87,53 @@ public class Game extends Canvas{
         c.add(startButtonPanel);
         c.add(quitButtonPanel);
 
+    }
+    /////////////MAIN GAME SCREEN///////////////////
+    public void createGameScreen(){
+
+        /////////DISABLE THE MAIN SCREEN PANELS//////////////////
+        titlePanel.setVisible(false);
+        startButtonPanel.setVisible(false);
+        quitButtonPanel.setVisible(false);
+
+        /////////MAIN GAME SCREEN//////////////
+        mainTextPanel = new JPanel();
+        mainTextPanel.setBounds(100, 100, 600, 250);
+        mainTextPanel.setBackground(Color.GREEN);
+        c.add(mainTextPanel);
+
+        mainTextArea = new JTextArea("This is the main text area!");
+        mainTextArea.setBounds(100, 100, 600, 250);
+        mainTextArea.setBackground(Color.BLACK);
+        mainTextArea.setForeground(Color.WHITE);
+        mainTextArea.setFont(titleFont);
+        mainTextArea.setLineWrap(true);
+        mainTextPanel.add(mainTextArea);
+    }
+
+    public static int quitGame() {
+
+        return 0;
+
+    }
+
+    //////////HANDLES USER MOUSE INPUT TO PERFORM ACTION/////////////
+    public class TitleScreenHandler implements ActionListener {
+
+        public void actionPerformed(ActionEvent event) {
+
+            createGameScreen();
+
+        }
+    }
+    ///////QUIT GAME WHEN BUTTON IS PRESSED///////////
+    public class quitGameHandler implements ActionListener {
+
+        public void actionPerformed(ActionEvent event) {
+
+            quitGame();
+
+        }
     }
     /*----------------------------------------------------------------------------------------------------*/
 }
