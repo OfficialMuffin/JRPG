@@ -20,7 +20,7 @@ public class Game extends Canvas{
     Font titleFont = new Font("Cooper Black", Font.PLAIN,90);
     private static int width = 800;
     private static int height = 600;
-    public static String title ="Blueberry's Game";
+    public static String title ="JRPG";
 
     /*----------------------------------------------------------------------------------------------------*/
     public static void main(String[] args){
