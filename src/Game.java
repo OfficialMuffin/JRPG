@@ -51,8 +51,9 @@ public class Game extends Canvas{
 
         //////////START BUTTON PANEL//////////////////////
         startButtonPanel = new JPanel();
-        startButtonPanel.setBounds(300, 400, 50, 50);
+        startButtonPanel.setBounds(300, 400, 100, 100);
         startButtonPanel.setForeground(Color.RED);
+        startButtonPanel.setBackground(Color.BLACK);
 
         //////////START BUTTON//////////////////////
         startButton = new JButton("START");
@@ -61,8 +62,9 @@ public class Game extends Canvas{
 
         //////////QUIT BUTTON PANEL/////////////////
         quitButtonPanel = new JPanel();
-        quitButtonPanel.setBounds(300, 400, 200, 100);
+        quitButtonPanel.setBounds(350, 400, 200, 200);
         quitButtonPanel.setForeground(Color.pink);
+        quitButtonPanel.setBackground(Color.BLACK);
 
         //////////QUIT BUTTON///////////////
         quitButton = new JButton("QUIT");
