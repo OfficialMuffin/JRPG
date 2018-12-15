@@ -20,6 +20,7 @@ public class Game extends Canvas{
     TitleScreenHandler tsHandler = new TitleScreenHandler();
     quitGameHandler qHandler = new quitGameHandler();
     Font titleFont = new Font("Cooper Black", Font.PLAIN,90);
+    Font gameFont = new Font("Times New Roman", Font.PLAIN, 25);
     private static int width = 800;
     private static int height = 600;
     public static String title ="JRPG";
@@ -87,15 +88,6 @@ public class Game extends Canvas{
         c.add(startButtonPanel);
         c.add(quitButtonPanel);
 
-    }
-    /////////////MAIN GAME SCREEN///////////////////
-    public void createGameScreen(){
-
-        /////////DISABLE THE MAIN SCREEN PANELS//////////////////
-        titlePanel.setVisible(false);
-        startButtonPanel.setVisible(false);
-        quitButtonPanel.setVisible(false);
-
         /////////MAIN GAME SCREEN//////////////
         mainTextPanel = new JPanel();
         mainTextPanel.setBounds(100, 100, 600, 250);
@@ -106,9 +98,22 @@ public class Game extends Canvas{
         mainTextArea.setBounds(100, 100, 600, 250);
         mainTextArea.setBackground(Color.BLACK);
         mainTextArea.setForeground(Color.WHITE);
-        mainTextArea.setFont(titleFont);
+        mainTextArea.setFont(gameFont);
         mainTextArea.setLineWrap(true);
+        mainTextArea.setWrapStyleWord(true);
         mainTextPanel.add(mainTextArea);
+        mainTextPanel.setVisible(false);
+    }
+
+    /////////DISABLE THE MAIN SCREEN PANELS//////////////////
+    public void createGameScreen() {
+
+        titlePanel.setVisible(false);
+        startButtonPanel.setVisible(false);
+        quitButtonPanel.setVisible(false);
+
+        mainTextPanel.setVisible(true);
+
     }
 
     public void quitGame() {
@@ -120,7 +125,6 @@ public class Game extends Canvas{
             System.exit(0);
 
         }
-
     }
 
     //////////HANDLES USER MOUSE INPUT TO PERFORM ACTION/////////////

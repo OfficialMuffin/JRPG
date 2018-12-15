@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### Added
 - Quit Button
 - Main Game screen
+- Confirmation Dialog when Quit is clicked
 
 ### Known Issues
 - No text is displayed when start button is clicked
