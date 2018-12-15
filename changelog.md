@@ -14,7 +14,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Welcome text
 
 ### Known Issues
-- Mood label does nto show correctly
+- Mood label does not show correctly
 
 ### Fixed Issues
 - Main game text not visible when start is clicked
