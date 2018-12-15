@@ -5,7 +5,17 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-## 0.0.3 - 2018-12-15
+## 0.0.3 - 2018-12-15 [LATEST]
+### Added
+- Choice Buttons
+- Player mood
+
+### Changed
+- Welcome text
+
+### Known Issues
+- Mood label does nto show correctly
+
 ### Fixed Issues
 - Main game text not visible when start is clicked
 
