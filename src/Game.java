@@ -21,7 +21,7 @@ public class Game extends Canvas{
     Font gameFont = new Font("Times New Roman", Font.PLAIN, 25);
     private static int width = 800;
     private static int height = 600;
-    public static String title ="JRPG";
+    public static String title ="OfficialMuffin's RPG";
 
     /*----------------------------------------------------------------------------------------------------*/
     public static void main(String[] args){
@@ -60,6 +60,7 @@ public class Game extends Canvas{
         startButton = new JButton("START");
         startButton.setBackground(Color.BLACK);
         startButton.setForeground(Color.WHITE);
+        startButton.setFocusPainted(false);
 
         startButton.addActionListener(tsHandler); // Add listener to start button
 
@@ -74,6 +75,7 @@ public class Game extends Canvas{
         quitButton.setBackground(Color.BLACK);
         quitButton.setForeground(Color.WHITE);
         quitButton.addActionListener(qHandler);
+        quitButton.setFocusPainted(false);
 
 
         //////////ADD ELEMENTS TO WINDOW//////////////////////
@@ -116,32 +118,33 @@ public class Game extends Canvas{
         choice1.setBackground(Color.BLACK);
         choice1.setForeground(Color.WHITE);
         choice1.setFont(gameFont);
+        choice1.setFocusPainted(false);
         choiceButtonPanel.add(choice1);
 
         choice2 = new JButton("Choice 2");
         choice2.setBackground(Color.BLACK);
         choice2.setForeground(Color.WHITE);
         choice2.setFont(gameFont);
+        choice2.setFocusPainted(false);
         choiceButtonPanel.add(choice2);
 
         choice3 = new JButton("Choice 3");
         choice3.setBackground(Color.BLACK);
         choice3.setForeground(Color.WHITE);
         choice3.setFont(gameFont);
+        choice3.setFocusPainted(false);
         choiceButtonPanel.add(choice3);
 
         /////////PLAYER INFO PANEL//////////
         playerInfoPanel = new JPanel();
         playerInfoPanel.setBounds(100, 15, 600, 50);
-        playerInfoPanel.setBackground(Color.BLUE);
-        playerInfoPanel.setLayout(new GridLayout(1,4));
+        playerInfoPanel.setBackground(Color.BLACK);
         playerInfoPanel.setVisible(false);
         c.add(playerInfoPanel);
 
         playerMoodLabel = new JLabel("Mood: ");
         playerMoodLabel.setFont(gameFont);
         playerMoodLabel.setForeground(Color.WHITE);
-        playerMoodLabel.setVisible(false);
         playerInfoPanel.add(playerMoodLabel);
 
         playerMood = new JLabel();
@@ -151,13 +154,14 @@ public class Game extends Canvas{
         playerInfoPanel.add(playerMood);
 
         playerSetup();
+
     }
 
     //////////PLAYER INFO///////////////////
     public void playerSetup() {
 
         mood = "Happy";
-        playerMoodLabel.setText(mood);
+        playerMood.setText(mood);
 
     }
 
@@ -176,6 +180,7 @@ public class Game extends Canvas{
 
     }
 
+    //////////SHOW A CONFIRM TO QUIT DIALOG////////////////////
     public void quitGame() {
 
         int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to quit?", "Quit?", JOptionPane.YES_NO_OPTION);
