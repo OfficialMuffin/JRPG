@@ -19,7 +19,7 @@ public class Game extends Canvas{
     quitGameHandler qHandler = new quitGameHandler();
     choiceHandler cHandler = new choiceHandler();
     Font titleFont = new Font("Cooper Black", Font.PLAIN,90);
-    Font gameFont = new Font("Times New Roman", Font.PLAIN, 25);
+    Font gameFont = new Font("Times New Roman", Font.PLAIN, 18);
     private static int width = 800;
     private static int height = 600;
     public static String title ="OfficialMuffin's RPG";
@@ -257,7 +257,11 @@ public class Game extends Canvas{
     public void sistersBedroom() {
 
         position = "sistersBedroom";
-        mainTextArea.setText("*Sister shouts at you* GET OUT! NO BOYS ALLOWED!");
+        mainTextArea.setText("*Sister shouts at you* GET OUT! NO BOYS ALLOWED!\n\n" +
+                "*You say to yourself* Ok, Ok, Jeeze! No need to be a bitch about it.\n\n" +
+                "*You walk away from her room, sighing*\n\n" +
+                "*You think to yourself* I wish I could get along with her better\n\n" +
+                "*Your mother walks by and says* Why haven't you cleaned your room yet?\n\n");
         playerMood.setText("Upset");
 
         choice1.setText("Look at your Bedroom");
