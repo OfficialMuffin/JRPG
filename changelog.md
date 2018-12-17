@@ -5,7 +5,14 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-## 0.0.4 - 2018-12-16 [LATEST]
+## 0.0.5 - 2018-12-17 [LATEST]
+### Added
+- Buttons now have places to visit
+
+### Changed
+- Made buttons larger
+
+## 0.0.4 - 2018-12-16 
 ### Changed
 - Title of Game
 - Button Visuals

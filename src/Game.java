@@ -12,11 +12,12 @@ public class Game extends Canvas{
     JPanel titlePanel,startButtonPanel, quitButtonPanel, mainTextPanel, choiceButtonPanel,
             playerInfoPanel;
     JLabel titleLabel, playerMoodLabel, playerMood;
-    JButton startButton, quitButton, choice1, choice2, choice3;
+    JButton startButton, quitButton, choice1, choice2, choice3, choice4;
     JTextArea mainTextArea;
-    String mood;
+    String mood, position;
     TitleScreenHandler tsHandler = new TitleScreenHandler();
     quitGameHandler qHandler = new quitGameHandler();
+    choiceHandler cHandler = new choiceHandler();
     Font titleFont = new Font("Cooper Black", Font.PLAIN,90);
     Font gameFont = new Font("Times New Roman", Font.PLAIN, 25);
     private static int width = 800;
@@ -96,6 +97,7 @@ public class Game extends Canvas{
 
         mainTextArea = new JTextArea("Welcome to OfficialMuffin's RPG!\n" +
                 "What would you like to do?");
+
         mainTextArea.setBounds(100, 100, 600, 250);
         mainTextArea.setBackground(Color.BLACK);
         mainTextArea.setForeground(Color.WHITE);
@@ -108,9 +110,9 @@ public class Game extends Canvas{
 
         /////////////CHOICE BUTTONS///////////////////
         choiceButtonPanel = new JPanel();
-        choiceButtonPanel.setBounds(250, 350, 300, 150);
-        choiceButtonPanel.setBackground(Color.RED);
-        choiceButtonPanel.setLayout(new GridLayout(3,1));
+        choiceButtonPanel.setBounds(100, 350, 600, 150);
+        choiceButtonPanel.setBackground(Color.BLACK);
+        choiceButtonPanel.setLayout(new GridLayout(4,1));
         choiceButtonPanel.setVisible(false);
         c.add(choiceButtonPanel);
 
@@ -119,6 +121,8 @@ public class Game extends Canvas{
         choice1.setForeground(Color.WHITE);
         choice1.setFont(gameFont);
         choice1.setFocusPainted(false);
+        choice1.addActionListener(cHandler);
+        choice1.setActionCommand("c1");
         choiceButtonPanel.add(choice1);
 
         choice2 = new JButton("Choice 2");
@@ -126,6 +130,8 @@ public class Game extends Canvas{
         choice2.setForeground(Color.WHITE);
         choice2.setFont(gameFont);
         choice2.setFocusPainted(false);
+        choice2.addActionListener(cHandler);
+        choice2.setActionCommand("c2");
         choiceButtonPanel.add(choice2);
 
         choice3 = new JButton("Choice 3");
@@ -133,7 +139,18 @@ public class Game extends Canvas{
         choice3.setForeground(Color.WHITE);
         choice3.setFont(gameFont);
         choice3.setFocusPainted(false);
+        choice3.addActionListener(cHandler);
+        choice3.setActionCommand("c3");
         choiceButtonPanel.add(choice3);
+
+        choice4 = new JButton("Choice 4");
+        choice4.setBackground(Color.BLACK);
+        choice4.setForeground(Color.WHITE);
+        choice4.setFont(gameFont);
+        choice4.setFocusPainted(false);
+        choice4.addActionListener(cHandler);
+        choice4.setActionCommand("c4");
+        choiceButtonPanel.add(choice4);
 
         /////////PLAYER INFO PANEL//////////
         playerInfoPanel = new JPanel();
@@ -163,6 +180,8 @@ public class Game extends Canvas{
         mood = "Happy";
         playerMood.setText(mood);
 
+        intro();
+
     }
 
     /////////DISABLE THE MAIN SCREEN PANELS//////////////////
@@ -177,6 +196,74 @@ public class Game extends Canvas{
         playerInfoPanel.setVisible(true);
         playerMoodLabel.setVisible(true);
         playerMood.setVisible(true);
+
+    }
+
+    //////////GAME PLACES/////////////
+    public void intro() {
+
+        position = "intro";
+        mainTextArea.setText("*You wake up, get dressed and ask yourself* What to do today?");
+
+        choice1.setText("Look at your Bedroom");
+        choice2.setText("Go to the Kitchen");
+        choice3.setText("View the Garden");
+        choice4.setText("Talk to your sister in her room");
+
+    }
+
+    public void bedroom() {
+
+        position = "bedroom";
+        mainTextArea.setText("*You say to yourself* Ughh, my bedroom is a mess. I really need to clean up...");
+        playerMood.setText("Uncomfortable");
+
+        choice1.setText("Look at your Bedroom");
+        choice2.setText("Go to the Kitchen");
+        choice3.setText("View the Garden");
+        choice4.setText("Talk to your sister in her room");
+
+
+    }
+
+    public void kitchen() {
+
+        position = "kitchen";
+        mainTextArea.setText("*You say to yourself* Im feeling quite hungry. What's for snack? *Looks in the fridge*\n" +
+                                "I'll take this!");
+        playerMood.setText("Hungry");
+
+        choice1.setText("Look at your Bedroom");
+        choice2.setText("Go to the Kitchen");
+        choice3.setText("View the Garden");
+        choice4.setText("Talk to your sister in her room");
+
+    }
+
+    public void garden() {
+
+        position = "garden";
+        mainTextArea.setText("*takes a deep breath* Ahhh, what a beautiful day!\n" +
+                                "*Birds chirp nearby*");
+        playerMood.setText("Calm");
+
+        choice1.setText("Look at your Bedroom");
+        choice2.setText("Go to the Kitchen");
+        choice3.setText("View the Garden");
+        choice4.setText("Talk to your sister in her room");
+
+    }
+
+    public void sistersBedroom() {
+
+        position = "sistersBedroom";
+        mainTextArea.setText("*Sister shouts at you* GET OUT! NO BOYS ALLOWED!");
+        playerMood.setText("Upset");
+
+        choice1.setText("Look at your Bedroom");
+        choice2.setText("Go to the Kitchen");
+        choice3.setText("View the Garden");
+        choice4.setText("Talk to your sister in her room");
 
     }
 
@@ -210,5 +297,112 @@ public class Game extends Canvas{
 
         }
     }
+    /////////CHOICE BUTTON HANDLER/////////////
+    public class choiceHandler implements ActionListener {
+
+        public void actionPerformed(ActionEvent event) {
+
+            String playerChoice = event.getActionCommand();
+
+            switch (position) {
+
+                case "intro":
+
+                    switch(playerChoice) {
+
+                        case "c1":
+                            bedroom();
+                            break;
+                        case "c2":
+                            kitchen();
+                            break;
+                        case "c3":
+                            garden();
+                            break;
+                        case "c4":
+                            sistersBedroom();
+                            break;
+                    }
+                    break;
+
+                case "bedroom":
+
+                    switch (playerChoice) {
+
+                        case "c1":
+                            bedroom();
+                            break;
+                        case "c2":
+                            kitchen();
+                            break;
+                        case "c3":
+                            garden();
+                            break;
+                        case "c4":
+                            sistersBedroom();
+                            break;
+                    }
+                    break;
+
+                case "kitchen":
+
+                    switch (playerChoice) {
+
+                        case "c1":
+                            bedroom();
+                            break;
+                        case "c2":
+                            kitchen();
+                            break;
+                        case "c3":
+                            garden();
+                            break;
+                        case "c4":
+                            sistersBedroom();
+                            break;
+                    }
+                    break;
+
+                case "garden":
+
+                    switch (playerChoice) {
+
+                        case "c1":
+                            bedroom();
+                            break;
+                        case "c2":
+                            kitchen();
+                            break;
+                        case "c3":
+                            garden();
+                            break;
+                        case "c4":
+                            sistersBedroom();
+                            break;
+                    }
+                    break;
+
+                case "sistersBedroom":
+
+                    switch (playerChoice) {
+
+                        case "c1":
+                            bedroom();
+                            break;
+                        case "c2":
+                            kitchen();
+                            break;
+                        case "c3":
+                            garden();
+                            break;
+                        case "c4":
+                            sistersBedroom();
+                            break;
+                    }
+                    break;
+                }
+            }
+
+        }
+    }
     /*----------------------------------------------------------------------------------------------------*/
-}
