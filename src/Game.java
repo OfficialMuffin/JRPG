@@ -10,11 +10,12 @@ public class Game extends Canvas{
     public static JFrame window;
     public static Container c;
     JPanel titlePanel,startButtonPanel, quitButtonPanel, mainTextPanel, choiceButtonPanel,
-            playerInfoPanel;
-    JLabel titleLabel, playerMoodLabel, playerMood;
+            playerInfoPanel, inventoryInfoPanel;
+    JLabel titleLabel, playerMoodLabel, playerMood, inventoryLabel, inventory;
     JButton startButton, quitButton, choice1, choice2, choice3, choice4;
     JTextArea mainTextArea;
     String mood, position;
+    int itemsInventory;
     TitleScreenHandler tsHandler = new TitleScreenHandler();
     quitGameHandler qHandler = new quitGameHandler();
     choiceHandler cHandler = new choiceHandler();
@@ -170,6 +171,24 @@ public class Game extends Canvas{
         playerMood.setVisible(false);
         playerInfoPanel.add(playerMood);
 
+        /////////INVENTORY INFO PANEL/////////////
+        inventoryInfoPanel = new JPanel();
+        inventoryInfoPanel.setBounds(300, 15,300,50);
+        inventoryInfoPanel.setBackground(Color.BLUE);
+        inventoryInfoPanel.setVisible(false);
+        c.add(inventoryInfoPanel);
+
+        inventoryLabel = new JLabel("Inventory: ");
+        inventoryLabel.setFont(gameFont);
+        inventoryLabel.setForeground(Color.WHITE);
+        inventoryLabel.add(inventoryInfoPanel);
+
+        inventory = new JLabel();
+        inventory.setFont(gameFont);
+        inventory.setForeground(Color.WHITE);
+        inventory.setVisible(false);
+        inventoryInfoPanel.add(inventory);
+
         playerSetup();
 
     }
@@ -179,6 +198,15 @@ public class Game extends Canvas{
 
         mood = "Happy";
         playerMood.setText(mood);
+
+        intro();
+
+    }
+
+    public void inventorySetup() {
+
+        itemsInventory = 0;
+        //inventory.setText(itemsInventory);
 
         intro();
 
@@ -196,6 +224,9 @@ public class Game extends Canvas{
         playerInfoPanel.setVisible(true);
         playerMoodLabel.setVisible(true);
         playerMood.setVisible(true);
+        inventoryInfoPanel.setVisible(true);
+        inventoryLabel.setVisible(true);
+        inventory.setVisible(true);
 
     }
 

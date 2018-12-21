@@ -5,7 +5,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-## 0.0.5 - 2018-12-17 [LATEST]
+## 0.0.6 - 2018-12-21 [LATEST]
+### Added
+- Created JAR file (Added link to download in README.md)
+
+## 0.0.5 - 2018-12-17 
 ### Added
 - Buttons now have places to visit
 
