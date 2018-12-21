@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="RPGGUI:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/RPGGUI_jar</output-path>
+    <root id="archive" name="RPGGUI.jar">
+      <element id="module-output" name="RPGGUI" />
+    </root>
+  </artifact>
+</component>
