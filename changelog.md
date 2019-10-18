@@ -5,7 +5,17 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
-## 0.0.6 - 2018-12-21 [LATEST]
+## 0.0.7 - 2019-10-18 [LATEST]
+### Changed
+- Optimised Imports
+- Changed methods to private
+- Generally tidied up code 
+
+### Removed
+- Removed duplicated cases within the switch statement.
+- Inventory setup was not used so removed.
+
+## 0.0.6 - 2018-12-21
 ### Added
 - Created JAR file (Added link to download in README.md)
 

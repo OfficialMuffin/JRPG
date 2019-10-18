@@ -1,4 +1,9 @@
-import java.awt.*;
+import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -7,23 +12,14 @@ import javax.swing.*;
 
 public class Game extends Canvas{
     private static final long serialVersionUID = 1L;
-    public static JFrame window;
-    public static Container c;
-    JPanel titlePanel,startButtonPanel, quitButtonPanel, mainTextPanel, choiceButtonPanel,
+    private static JFrame window;
+    private JPanel titlePanel,startButtonPanel, quitButtonPanel, mainTextPanel, choiceButtonPanel,
             playerInfoPanel, inventoryInfoPanel;
-    JLabel titleLabel, playerMoodLabel, playerMood, inventoryLabel, inventory;
-    JButton startButton, quitButton, choice1, choice2, choice3, choice4;
-    JTextArea mainTextArea;
-    String mood, position;
-    int itemsInventory;
-    TitleScreenHandler tsHandler = new TitleScreenHandler();
-    quitGameHandler qHandler = new quitGameHandler();
-    choiceHandler cHandler = new choiceHandler();
-    Font titleFont = new Font("Cooper Black", Font.PLAIN,90);
-    Font gameFont = new Font("Times New Roman", Font.PLAIN, 18);
-    private static int width = 800;
-    private static int height = 600;
-    public static String title ="OfficialMuffin's RPG";
+    private JLabel playerMoodLabel, playerMood, inventoryLabel, inventory;
+    private JButton choice1, choice2, choice3, choice4;
+    private JTextArea mainTextArea;
+    private String position;
+    private static String title ="OfficialMuffin's RPG";
 
     /*----------------------------------------------------------------------------------------------------*/
     public static void main(String[] args){
@@ -40,16 +36,19 @@ public class Game extends Canvas{
     public Game(){
 
         window = new JFrame();
+        int height = 600;
+        int width = 800;
         setPreferredSize(new Dimension(width, height));
         window.getContentPane().setBackground(Color.BLACK);
-        c = window.getContentPane();
+        Container c = window.getContentPane();
 
         //////////TITLE PANEL//////////////////////
         titlePanel = new JPanel();
         titlePanel.setBounds(100, 100, 600, 150);
         titlePanel.setBackground(Color.BLACK);
-        titleLabel = new JLabel("TEXT RPG");
+        JLabel titleLabel = new JLabel("TEXT RPG");
         titleLabel.setForeground(Color.WHITE);
+        Font titleFont = new Font("Cooper Black", Font.PLAIN, 90);
         titleLabel.setFont(titleFont);
 
         //////////START BUTTON PANEL//////////////////////
@@ -59,11 +58,12 @@ public class Game extends Canvas{
         startButtonPanel.setBackground(Color.BLACK);
 
         //////////START BUTTON//////////////////////
-        startButton = new JButton("START");
+        JButton startButton = new JButton("START");
         startButton.setBackground(Color.BLACK);
         startButton.setForeground(Color.WHITE);
         startButton.setFocusPainted(false);
 
+        TitleScreenHandler tsHandler = new TitleScreenHandler();
         startButton.addActionListener(tsHandler); // Add listener to start button
 
         //////////QUIT BUTTON PANEL/////////////////
@@ -73,9 +73,10 @@ public class Game extends Canvas{
         quitButtonPanel.setBackground(Color.BLACK);
 
         //////////QUIT BUTTON///////////////
-        quitButton = new JButton("QUIT");
+        JButton quitButton = new JButton("QUIT");
         quitButton.setBackground(Color.BLACK);
         quitButton.setForeground(Color.WHITE);
+        quitGameHandler qHandler = new quitGameHandler();
         quitButton.addActionListener(qHandler);
         quitButton.setFocusPainted(false);
 
@@ -102,6 +103,7 @@ public class Game extends Canvas{
         mainTextArea.setBounds(100, 100, 600, 250);
         mainTextArea.setBackground(Color.BLACK);
         mainTextArea.setForeground(Color.WHITE);
+        Font gameFont = new Font("Times New Roman", Font.PLAIN, 18);
         mainTextArea.setFont(gameFont);
         mainTextArea.setLineWrap(true);
         mainTextArea.setWrapStyleWord(true);
@@ -122,6 +124,7 @@ public class Game extends Canvas{
         choice1.setForeground(Color.WHITE);
         choice1.setFont(gameFont);
         choice1.setFocusPainted(false);
+        choiceHandler cHandler = new choiceHandler();
         choice1.addActionListener(cHandler);
         choice1.setActionCommand("c1");
         choiceButtonPanel.add(choice1);
@@ -194,26 +197,17 @@ public class Game extends Canvas{
     }
 
     //////////PLAYER INFO///////////////////
-    public void playerSetup() {
+    private void playerSetup() {
 
-        mood = "Happy";
+        String mood = "Happy";
         playerMood.setText(mood);
 
         intro();
 
     }
 
-    public void inventorySetup() {
-
-        itemsInventory = 0;
-        //inventory.setText(itemsInventory);
-
-        intro();
-
-    }
-
     /////////DISABLE THE MAIN SCREEN PANELS//////////////////
-    public void createGameScreen() {
+    private void createGameScreen() {
 
         titlePanel.setVisible(false);
         startButtonPanel.setVisible(false);
@@ -231,7 +225,7 @@ public class Game extends Canvas{
     }
 
     //////////GAME PLACES/////////////
-    public void intro() {
+    private void intro() {
 
         position = "intro";
         mainTextArea.setText("*You wake up, get dressed and ask yourself* What to do today?");
@@ -243,7 +237,7 @@ public class Game extends Canvas{
 
     }
 
-    public void bedroom() {
+    private void bedroom() {
 
         position = "bedroom";
         mainTextArea.setText("*You say to yourself* Ughh, my bedroom is a mess. I really need to clean up...");
@@ -257,7 +251,7 @@ public class Game extends Canvas{
 
     }
 
-    public void kitchen() {
+    private void kitchen() {
 
         position = "kitchen";
         mainTextArea.setText("*You say to yourself* Im feeling quite hungry. What's for snack? *Looks in the fridge*\n" +
@@ -271,7 +265,7 @@ public class Game extends Canvas{
 
     }
 
-    public void garden() {
+    private void garden() {
 
         position = "garden";
         mainTextArea.setText("*takes a deep breath* Ahhh, what a beautiful day!\n" +
@@ -285,7 +279,7 @@ public class Game extends Canvas{
 
     }
 
-    public void sistersBedroom() {
+    private void sistersBedroom() {
 
         position = "sistersBedroom";
         mainTextArea.setText("*Sister shouts at you* GET OUT! NO BOYS ALLOWED!\n\n" +
@@ -303,7 +297,7 @@ public class Game extends Canvas{
     }
 
     //////////SHOW A CONFIRM TO QUIT DIALOG////////////////////
-    public void quitGame() {
+    private void quitGame() {
 
         int reply = JOptionPane.showConfirmDialog(null, "Are you sure you want to quit?", "Quit?", JOptionPane.YES_NO_OPTION);
         if (reply == JOptionPane.YES_OPTION) {
@@ -343,101 +337,37 @@ public class Game extends Canvas{
 
                 case "intro":
 
-                    switch(playerChoice) {
-
-                        case "c1":
-                            bedroom();
-                            break;
-                        case "c2":
-                            kitchen();
-                            break;
-                        case "c3":
-                            garden();
-                            break;
-                        case "c4":
-                            sistersBedroom();
-                            break;
-                    }
-                    break;
-
                 case "bedroom":
-
-                    switch (playerChoice) {
-
-                        case "c1":
-                            bedroom();
-                            break;
-                        case "c2":
-                            kitchen();
-                            break;
-                        case "c3":
-                            garden();
-                            break;
-                        case "c4":
-                            sistersBedroom();
-                            break;
-                    }
-                    break;
 
                 case "kitchen":
 
-                    switch (playerChoice) {
-
-                        case "c1":
-                            bedroom();
-                            break;
-                        case "c2":
-                            kitchen();
-                            break;
-                        case "c3":
-                            garden();
-                            break;
-                        case "c4":
-                            sistersBedroom();
-                            break;
-                    }
-                    break;
-
                 case "garden":
-
-                    switch (playerChoice) {
-
-                        case "c1":
-                            bedroom();
-                            break;
-                        case "c2":
-                            kitchen();
-                            break;
-                        case "c3":
-                            garden();
-                            break;
-                        case "c4":
-                            sistersBedroom();
-                            break;
-                    }
-                    break;
 
                 case "sistersBedroom":
 
-                    switch (playerChoice) {
-
-                        case "c1":
-                            bedroom();
-                            break;
-                        case "c2":
-                            kitchen();
-                            break;
-                        case "c3":
-                            garden();
-                            break;
-                        case "c4":
-                            sistersBedroom();
-                            break;
-                    }
+                    playerChoice(playerChoice);
                     break;
-                }
             }
-
         }
+
+        private void playerChoice(String playerChoice) {
+            switch(playerChoice) {
+
+                case "c1":
+                    bedroom();
+                    break;
+                case "c2":
+                    kitchen();
+                    break;
+                case "c3":
+                    garden();
+                    break;
+                case "c4":
+                    sistersBedroom();
+                    break;
+            }
+        }
+
+    }
     }
     /*----------------------------------------------------------------------------------------------------*/

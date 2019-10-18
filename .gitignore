@@ -3,6 +3,7 @@
 
 # Intellij Files
 *.idea
+*.xml
 
 # Log file
 *.log
